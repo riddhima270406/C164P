@@ -14,14 +14,14 @@ AFRAME.registerComponent("bullets", {
 
         bullet.setAttribute("material", "color", "black");
 
-        var cam = document.querySelector("#camera");
+        var cam = document.querySelector("#camera-rig");
 
         pos = cam.getAttribute("position");
 
         bullet.setAttribute("position", {
           x: pos.x,
-          y: pos.y,
-          z: pos.z,
+          y: pos.y+1.6,
+          z: pos.z-0.08,
         });
 
         var camera = document.querySelector("#camera").object3D;
@@ -65,6 +65,7 @@ AFRAME.registerComponent("bullets", {
     var pos = element.getAttribute("position")
     var rotate = elementHit.getAttribute("rotation")
 
+    //set the position, rotation, scale
     paint.setAttribute("position", {
       x: pos.x,
       y: pos.y,
@@ -81,7 +82,7 @@ AFRAME.registerComponent("bullets", {
       z: 2,
     });
 
-
+    //choose the paint splash image randomly
     var colorNum = parseInt(Math.random() * 8 + 1)
 
     paint.setAttribute("material", {
